@@ -11,7 +11,7 @@ export default function useVisualMode(initial) {
 
     if (replace === true) {
       setHistory([...history])
-    }
+    };
   };
 
   const back = function() {
@@ -19,10 +19,8 @@ export default function useVisualMode(initial) {
     if (history.length > 1) {
       setMode(history[history.length - 2]);
       setHistory([...history.slice(0, history.length - 1)]);
-    }
-  }
-
-
-
+    };
+  };
+  
   return { mode, transition, back };
 }
