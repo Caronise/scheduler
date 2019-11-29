@@ -6,17 +6,30 @@ import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
 import Form from "components/Appointment/Form";
+import Status from "components/Appointment/Status";
 
-export default function Appointment({ interview, time, id, interviewers }) {
+export default function Appointment({ interview, time, id, interviewers, bookInterview }) {
 
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
+  const SAVING = "SAVING";
 
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
 
+  function save(name, interviewer) {
+    transition(SAVING);
+    const interview = {
+      student: name,
+      interviewer
+    };
+    bookInterview(id, interview)
+      .then(() => {
+        transition(SHOW)
+      })
+  }
 
 
   return (
@@ -33,8 +46,10 @@ export default function Appointment({ interview, time, id, interviewers }) {
         <Form 
           interviewers = {interviewers}
           onCancel = {() => back()}
+          onSave = {save}
         />
       )}
+      {mode === SAVING && <Status message="Saving" />}
     </article>
   );
 };

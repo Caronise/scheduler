@@ -4,8 +4,9 @@ export function getAppointmentsForDay(state, day) {
 
   const selectedDay = state.days.filter(dayObject => dayObject.name === day);
 
-  if (selectedDay[0] === undefined)
+  if (selectedDay.length === 0) {
     return [];
+  };
 
   selectedDay[0].appointments.forEach(appointmentId => {
     if (String(appointmentId) in state.appointments) {
