@@ -11,7 +11,6 @@ import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
 
 export default function Appointment({ interview, time, id, interviewers, bookInterview, deleteInterview }) {
-
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -27,11 +26,14 @@ export default function Appointment({ interview, time, id, interviewers, bookInt
   );
 
   function save(name, interviewer) {
-    transition(SAVING);
+    if(interviewer === null)
+      transition(ERROR_SAVE, true)
+
     const interview = {
       student: name,
-      interviewer
-    };
+      interviewer: interviewer || null
+    }
+    transition(SAVING);
     bookInterview(id, interview)
       .then(() => {
         transition(SHOW)
@@ -45,6 +47,8 @@ export default function Appointment({ interview, time, id, interviewers, bookInt
     transition(CONFIRM);
 
   };
+
+  // console.log(interview.interviewer.id);
 
   return (
     <article className="appointment">
@@ -85,10 +89,11 @@ export default function Appointment({ interview, time, id, interviewers, bookInt
       )}
       {mode === EDIT && (
         <Form
+          interviewer={interview.interviewer.id}
           interviewers={interviewers}
           onCancel={() => transition(SHOW)}
           onSave={save}
-          currentName={interview.student}
+          name={interview.student}
         />
       )}
       {mode === ERROR_DELETE && (

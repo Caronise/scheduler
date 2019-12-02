@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InterviewerList from "../InterviewerList";
 import Button from "../Button";
 
-export default function Form({ name, interviewers, interviewer, onSave, onCancel, currentName }) {
+export default function Form({ name, interviewers, interviewer, onSave, onCancel }) {
 
   const [stateName, setStateName] = useState(name || "");
   const [stateInterviewer, setStateInterviewer] = useState(interviewer || null);
@@ -27,7 +27,7 @@ export default function Form({ name, interviewers, interviewer, onSave, onCancel
             name={stateName}
             type="text"
             placeholder="Enter Student Name"
-            defaultValue={currentName}
+            defaultValue={name}
           />
         </form>
         <InterviewerList interviewers={interviewers} value={stateInterviewer} onChange={setStateInterviewer} />
