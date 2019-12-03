@@ -37,7 +37,7 @@ export function getInterview(state, interview) {
 };
 
 export function getInterviewersForDay(state, day) {
-
+  console.log(state)
   const filteredDays = state.days.filter(obj => obj.name === day)
   if (filteredDays.length === 0) {
     return [];

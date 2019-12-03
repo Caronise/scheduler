@@ -4,6 +4,8 @@ import axios from "axios";
 const SET_DAY = "SET_DAY";
 const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 const SET_INTERVIEW = "SET_INTERVIEW";
+const SET_SPOTS = "SET_SPOTS"
+
 
 function reducer(state, action) {
   switch (action.type) {
@@ -20,9 +22,17 @@ function reducer(state, action) {
         ...state.appointments,
         [action.id]: appointment
       };
-      return { ...state, 
-      appointments
+      return { ...state, appointments };
+    case SET_SPOTS:
+      const day = {
+        ...state.days[action.id],
+        spots: action.spots
       };
+      const days = [
+        ...state.days,
+      ];
+      days[action.id] = day;
+      return { ...state, days };
 
     default:
       throw new Error(
@@ -59,14 +69,21 @@ export function useApplicationData() {
     })
       .then(() => {
         dispatch({ type: SET_INTERVIEW, id, interview })
+        axios.get('http://localhost:8001/api/days')
+          .then((res) => {
+            dispatch({ type: SET_SPOTS, id: Math.floor(id / 5), spots: res.data[Math.floor(id / 5)].spots })
+          })
       })
   }
 
   function deleteInterview(id) {
-
     return axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
-        dispatch({ type: SET_INTERVIEW, id, interview: null });
+        dispatch({ type: SET_INTERVIEW, id, interview: null })
+        axios.get('http://localhost:8001/api/days')
+          .then((res) => {
+            dispatch({ type: SET_SPOTS, id: Math.floor(id / 5), spots: res.data[Math.floor(id / 5)].spots })
+          })
       })
   }
 
