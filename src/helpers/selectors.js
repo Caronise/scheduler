@@ -24,11 +24,9 @@ export function getInterview(state, interview) {
     return null;
   }
 
-  // student name and interviewer id are found in
   const studentName = interview.student
   const interviewerId = interview.interviewer
 
-  // interviewer info is found in
   const interviewerInfo = state.interviewers[interviewerId]
 
   interviewer.student = studentName;
@@ -37,7 +35,6 @@ export function getInterview(state, interview) {
 };
 
 export function getInterviewersForDay(state, day) {
-  console.log(state)
   const filteredDays = state.days.filter(obj => obj.name === day)
   if (filteredDays.length === 0) {
     return [];

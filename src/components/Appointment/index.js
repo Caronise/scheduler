@@ -48,8 +48,6 @@ export default function Appointment({ interview, time, id, interviewers, bookInt
 
   };
 
-  // console.log(interview.interviewer.id);
-
   return (
     <article className="appointment">
       <Header time={time} />
