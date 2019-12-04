@@ -49,7 +49,7 @@ export default function Appointment({ interview, time, id, interviewers, bookInt
   };
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
@@ -96,13 +96,13 @@ export default function Appointment({ interview, time, id, interviewers, bookInt
       )}
       {mode === ERROR_DELETE && (
         <Error
-          message="Ya fucked up the delete"
+          message="An error has occurred during the delete"
           onClose={() => back()}
         />
       )}
       {mode === ERROR_SAVE && (
         <Error
-          message="Ya fucked up the save"
+          message="An error has occurred during the save"
           onClose={() => back()}
         />
       )}
