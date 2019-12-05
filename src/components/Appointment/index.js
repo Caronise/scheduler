@@ -38,7 +38,7 @@ export default function Appointment({ interview, time, id, interviewers, bookInt
       .then(() => {
         transition(SHOW)
       })
-      .catch(() => {
+      .catch((e) => {
         transition(ERROR_SAVE, true)
       })
   };
@@ -67,8 +67,8 @@ export default function Appointment({ interview, time, id, interviewers, bookInt
           onSave={save}
         />
       )}
-      {mode === SAVING && <Status message="Saving" />}
-      {mode === DELETING && <Status message="Deleting" />}
+      {mode === SAVING && <Status message="SAVING" />}
+      {mode === DELETING && <Status message="DELETING" />}
       {mode === CONFIRM && (
         <Confirm
           message="Are you sure you would like to delete?"
