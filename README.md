@@ -14,11 +14,11 @@ Interview scheduler allows users to book meetings from a list of interviewers on
 
 ## Final Product
 
-!["Main page display & Book/Edit interview functionality"]()
+!["Main page display & Book/Edit interview functionality"](https://raw.githubusercontent.com/Caronise/scheduler/master/docs/appointment.png)
 
-!["Confirm delete functionality"]()
+!["Confirm delete functionality"](https://raw.githubusercontent.com/Caronise/scheduler/master/docs/Delete.png)
 
-!["Responsive loading and deleting functionality"]()
+!["Responsive deleting functionality"](https://raw.githubusercontent.com/Caronise/scheduler/master/docs/Saving.png)
 
 ## Getting Started
 
