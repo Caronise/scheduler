@@ -34,7 +34,7 @@ export function useApplicationData() {
       interview
     })
       .then(() => {
-        dispatch({ type: SET_INTERVIEW, id, interview })
+        dispatch({ type: SET_INTERVIEW, id, interview, operation: 'update' })
       })
   }
 
