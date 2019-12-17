@@ -1,6 +1,6 @@
 export function getAppointmentsForDay(state, day) {
 
-  const filteredAppointments = [];
+  let filteredAppointments = [];
 
   const selectedDay = state.days.filter(dayObject => dayObject.name === day);
 
@@ -8,13 +8,9 @@ export function getAppointmentsForDay(state, day) {
     return [];
   };
 
-  selectedDay[0].appointments.forEach(appointmentId => {
-    if (String(appointmentId) in state.appointments) {
-      filteredAppointments.push(state.appointments[appointmentId]);
-    };
-  });
+  filteredAppointments = selectedDay[0].appointments.map(app => state.appointments[app])
+  
   return filteredAppointments;
-
 };
 
 export function getInterview(state, interview) {
