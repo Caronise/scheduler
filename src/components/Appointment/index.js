@@ -97,13 +97,13 @@ export default function Appointment({ interview, time, id, interviewers, bookInt
       {mode === ERROR_DELETE && (
         <Error
           message="An error has occurred during the delete"
-          onClose={() => back()}
+          onClose={back}
         />
       )}
       {mode === ERROR_SAVE && (
         <Error
           message="An error has occurred during the save"
-          onClose={() => back()}
+          onClose={back}
         />
       )}
     </article>

@@ -28,6 +28,14 @@ Interview scheduler allows users to book meetings from a list of interviewers on
 4. Go to <http://localhost:8000/> in your browser.
 5. Enjoy the full features of the website (Look at the remaining spots for a given day and the available interviewers)
 
+
+## Download and Run the Scheduler API
+
+``` sh
+In order to utilize the scheduler, you must run on VM: https://github.com/Caronise/scheduler-api
+```
+
+
 ## Run the Webpack Development Server
 
 ```sh

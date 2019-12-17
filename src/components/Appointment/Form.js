@@ -19,15 +19,19 @@ export default function Form({ name, interviewers, interviewer, onSave, onCancel
     onCancel();
   }
 
-  function validate() {
-    if (stateName === "") {
-      setError("Student name cannot be blank");
-      return;
+  const validate = function(name, interviewer) {
+    if (name === "" && interviewer === null) {
+      return setError("Please enter name and select an interviewer.")
     }
-  
+    if (name === "") {
+      return setError("Student name cannot be blank");
+    }
+    if (interviewer === null) {
+      return setError("An interviewer must be selected")
+    }
     setError("");
     onSave(stateName, stateInterviewer);
-  }
+  };
 
   return (
     <main className="appointment__card appointment__card--create">
